@@ -315,12 +315,12 @@ func NewControlPlane(
 			return nil, fmt.Errorf(`failed to create group "%v": %w`, group.Name, err)
 		}
 		// Convert node links to dialers.
-		log.Infof(`Group "%v" node list:`, group.Name)
+		log.Debugf(`Group "%v" node list:`, group.Name)
 		for _, d := range dialers {
-			log.Infoln("\t" + d.Property().Name)
+			log.Debugln("\t" + d.Property().Name)
 		}
 		if len(dialers) == 0 {
-			log.Infoln("\t<Empty>")
+			log.Debugln("\t<Empty>")
 		}
 		// Create dialer group and append it to outbounds.
 		dialerGroup := outbound.NewDialerGroup(option, group.Name, dialers, annos, *policy,
